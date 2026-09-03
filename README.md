@@ -43,7 +43,6 @@ src/
   hooks/useRoulette.ts    spin state machine, timers, persistence
   lib/                    shuffleBag, sentence, audio, favicon
 public/                   favicon, og image, self-hosted fonts
-scripts/generate-og.ps1   regenerates public/og.png
 ```
 
 Zero runtime dependencies — just `react` and `react-dom`. Lint with `oxlint`,
