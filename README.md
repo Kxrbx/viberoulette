@@ -2,59 +2,73 @@
 
 One click decides what you build next.
 
-A one-button idea generator for vibe coders. Click once, get a niche and a product type to build, assembled into a single buildable sentence. No login, no tracking, no friction.
+**Live:** https://kxrbx.github.io/viberoulette/
+
+A one-button idea generator for people who ship software fast and stall on the question
+"what should I build next?" Click once, get a niche plus a product type, assembled into
+a single sentence specific enough to start building tonight. No login, no tracking,
+no ads, no backend.
 
 ![Vibe Roulette](public/og.png)
 
-## Why
+## Use it
 
-Idea paralysis kills more side projects than bad code. Vibe Roulette gives you something specific enough to start building tonight ("An AI voice agent for local plumbers"), not a category ("an app for businesses").
+- Click **Spin** (or press spacebar) and read the result.
+- Toggle **twists** on/off to add or drop the third constraint line.
+- Toggle **sound** on/off for the slot-machine ticks.
+- Everything (spin count, toggles) stays in your browser's `localStorage`. Nothing
+  leaves your device.
 
-## How it works
+## Make it yours
 
-- Combinatorial engine: ~104 niches × ~87 product types ≈ 9,000 unique ideas, plus ~35 optional twists
-- Shuffle-bag draws, so repeats are rare until the pool is exhausted
-- Slot-machine settle: niche lands ~1.15s, product ~1.65s, twist ~2.05s
-- Spacebar to spin, `prefers-reduced-motion` respected (instant reveal)
-- Twists and sound toggles persisted in `localStorage`, everything stays on-device
+The whole generator is three string arrays. Fork the repo and edit them:
 
-## Stack
+- `src/data/niches.ts` — audiences (`'dog groomers'`, `'D&D dungeon masters'`, …)
+- `src/data/products.ts` — software shapes (`'an AI voice agent'`, …)
+- `src/data/twists.ts` — optional constraints, layered on top when twists are on
 
-- React 19 + TypeScript + Vite 8
-- Zero runtime dependencies (no UI framework, no analytics)
-- Self-hosted fonts (Space Grotesk + IBM Plex Mono), grayscale editorial-terminal design
-- Static SPA — no backend in this version
+Draws come from a shuffle bag (`src/lib/shuffleBag.ts`), so repeats are rare until the
+pool is exhausted. The sentence is assembled in `src/lib/sentence.ts`
+(`"<Product> for <niche> — <twist>."`). Spin timings live in `src/hooks/useRoulette.ts`
+(1.15s / 1.65s / 2.05s stagger). Colors and type live in `src/index.css` and
+`DESIGN.md` — grayscale only, Space Grotesk + IBM Plex Mono, both self-hosted.
+
+## Project structure
+
+```
+src/
+  App.tsx                 page shell, header/footer, #legal routing
+  components/             ResultBoard, SpinButton, LegalOverlay
+  data/                   niches, products, twists, legal
+  hooks/useRoulette.ts    spin state machine, timers, persistence
+  lib/                    shuffleBag, sentence, audio, favicon
+public/                   favicon, og image, self-hosted fonts
+scripts/generate-og.ps1   regenerates public/og.png
+```
+
+Zero runtime dependencies — just `react` and `react-dom`. Lint with `oxlint`,
+types with `tsc`.
 
 ## Run it
 
 ```sh
 pnpm install
-pnpm dev
-pnpm build
-pnpm preview
+pnpm dev      # local dev
+pnpm build    # typecheck + static build into dist/
+pnpm preview  # serve the production build
 ```
 
-## Deploy (GitHub Pages + custom domain)
+## Deploy
 
-The build uses relative `base: './'` so it works on `username.github.io/viberoulette` and on a custom domain.
+Any static host works — the build uses relative `base: './'`. This repo deploys to
+GitHub Pages via `.github/workflows/pages.yml` on every push to `main`. For a custom
+domain, add a `CNAME` file at the repo root and point the domain at
+`<user>.github.io`.
 
-```sh
-pnpm build # outputs dist/
-```
+## Docs
 
-Push to `main` — the `.github/workflows/pages.yml` workflow builds and deploys to GitHub Pages automatically. To use a custom domain (e.g. `xxx.runs-on.dev`):
+- `PRODUCT.md` — what it is, who it is for, non-goals
+- `DESIGN.md` — visual system, motion, accessibility floor
 
-1. Add a `CNAME` file at repo root with your domain
-2. Point the domain: `records: { "CNAME": "USERNAME.github.io" }`
-3. Settings → Pages → custom domain → Enforce HTTPS
-
-## Project docs
-
-- `PRODUCT.md` — what it is, audience, monetization notes (disabled in this build)
-- `DESIGN.md` — visual system, motion, accessibility
-
-## Status
-
-Launch build: monetization (affiliate CTA, ad strip, tracking pixel) is disabled. See `src/data/offers.ts`, `src/components/AdStrip.tsx`, `src/lib/gravity.ts`, `src/lib/pixel.ts` — kept in tree for a later iteration.
-
-Built by [@Kxrbx](https://github.com/Kxrbx). MIT.
+Built by [@Kxrbx](https://github.com/Kxrbx). MIT — fork it, reskin it, feed it your
+own niches.

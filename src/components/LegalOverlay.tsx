@@ -54,7 +54,7 @@ export function LegalOverlay({ onClose }: LegalOverlayProps) {
           <p>
             Your preferences (spin count, twists and sound settings) are stored only in your
             browser&rsquo;s localStorage and never leave your device. There are no accounts, no
-            forms, no tracking, no sponsored content and no affiliate links in this version.
+            forms and no tracking.
           </p>
           <p>
             The hosting provider (GitHub Pages) may keep standard server logs for security

@@ -19,14 +19,12 @@ Combinatorial: ~104 niches × ~87 product types ≈ 9,000 unique ideas, plus ~35
 
 ## Brand commitments (pinned by user)
 - Clean and modern, text-based, dark theme, mostly grayscale. Typography does the work; no color accents, no casino clichés, no neon glow, no illustrations.
-- No login, no tracking, no friction. One page, one action. (Monetization amendment: a single outbound affiliate CTA appears after each reveal; it adds no tracking to this site — the tagged destination handles its own consent. Fonts are self-hosted; zero third-party requests on page load.)
-
+- No login, no tracking, no friction. One page, one action. Fonts are self-hosted; zero third-party requests on page load.
 ## Monetization
-Two revenue lines, both post-reveal or peripheral, never interstitial:
-1. **Affiliate CTA** — Bolt.new referral (15% of referred revenue up to $50/referral, cash via Cello) as one filled pill after each reveal with the referee discount in the label and `(affiliate)` disclosure.
-2. **Gravity ad strip** (trygravity.ai) — contextual text-ad pinned above the footer, matched to the current spin result server-side via a Vercel Edge Function (`/api/ad`, key stays server-side). Custom grayscale renderer, impression fired on visibility, no-fill hides the slot. Gravity pixel loads unconditionally (accepted EU trade-off); privacy disclosures live in the `#legal` overlay.
 
-No display banners, no email capture. Legal pages (publisher/host/privacy/affiliate/disclaimer) live in the overlay opened from the footer `legal` link; operator is an individual based in France (LCEN mentions légales apply).
+None. No ads, no affiliate links, no email capture, no tracking. Legal pages
+(publisher/host/privacy/disclaimer) live in the overlay opened from the footer `legal`
+link.
 
 ## Non-goals (v1)
 No sharing/copy buttons, no history, no lock/reroll-per-field, no backend. Single static SPA.
