@@ -2,7 +2,7 @@
 
 One click decides what you build next.
 
-**Live:** https://kxrbx.github.io/viberoulette/
+**Live:** https://viberoulette.lol
 
 A one-button idea generator for people who ship software fast and stall on the question
 "what should I build next?" Click once, get a niche plus a product type, assembled into
@@ -59,15 +59,14 @@ pnpm preview  # serve the production build
 
 ## Deploy
 
-Any static host works — the build uses relative `base: './'`. This repo deploys to
-GitHub Pages via `.github/workflows/pages.yml` on every push to `main`. For a custom
-domain, add a `CNAME` file at the repo root and point the domain at
-`<user>.github.io`.
+Hosted on [Vercel](https://vercel.com) at https://viberoulette.lol — every push to
+`main` redeploys automatically. Any static host works too, the build output in
+`dist/` is plain static files.
 
 ## Docs
 
 - `PRODUCT.md` — what it is, who it is for, non-goals
 - `DESIGN.md` — visual system, motion, accessibility floor
 
-Built by [@Kxrbx](https://github.com/Kxrbx). MIT — fork it, reskin it, feed it your
+Built by [@kxrbx](https://x.com/kxrbx). MIT — fork it, reskin it, feed it your
 own niches.
