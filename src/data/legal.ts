@@ -1,10 +1,11 @@
 export const LEGAL = {
-  publisherName: 'Kxrbx',
-  publisherAddress: 'Contact via GitHub — https://github.com/Kxrbx',
-  publisherEmail: 'Contact via GitHub issues',
+  siteUrl: 'https://viberoulette.lol',
+  publisherName: "Jean 'Kxrbx'",
+  publisherAddress: 'Contact via X — https://x.com/kxrbx',
+  publisherEmail: 'Contact via X',
   publisherPhone: '—',
   publisherSiret: 'Non-professional individual project, no SIRET',
-  hostName: 'GitHub Pages (GitHub, Inc.)',
-  hostAddress: '88 Colin P Kelly Jr St, San Francisco, CA 94107, USA',
+  hostName: 'Vercel Inc.',
+  hostAddress: '440 N Barranca Ave #4133, Covina, CA 91723, USA',
   hostPhone: '—',
 }

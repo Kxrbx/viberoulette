@@ -371,6 +371,42 @@ body {
   outline-offset: 3px;
 }
 
+/* ---------- credit ---------- */
+
+.credit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding-bottom: clamp(0.6rem, 1.5vh, 1rem);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+}
+
+.credit a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-dim);
+  text-decoration: none;
+}
+
+.credit a:hover {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.credit img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--line);
+}
+
 /* ---------- footer link ---------- */
 
 .footer-link {

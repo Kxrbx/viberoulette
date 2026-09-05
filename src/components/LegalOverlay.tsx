@@ -27,6 +27,11 @@ export function LegalOverlay({ onClose }: LegalOverlayProps) {
         <h1 className="legal-title">Legal</h1>
 
         <section className="legal-section">
+          <h2>Website</h2>
+          <p>{LEGAL.siteUrl}</p>
+        </section>
+
+        <section className="legal-section">
           <h2>Publisher</h2>
           <p>
             {LEGAL.publisherName}
@@ -57,7 +62,7 @@ export function LegalOverlay({ onClose }: LegalOverlayProps) {
             forms and no tracking.
           </p>
           <p>
-            The hosting provider (GitHub Pages) may keep standard server logs for security
+            The hosting provider (Vercel) may keep standard server logs for security
             purposes.
           </p>
           <p>Questions about this page: {LEGAL.publisherEmail}</p>

@@ -88,6 +88,14 @@ export default function App() {
         />
       </main>
 
+      <p className="credit">
+        built by{' '}
+        <a href="https://x.com/kxrbx" target="_blank" rel="noreferrer">
+          <img src="/avatar.jpg" alt="" width="20" height="20" loading="lazy" />
+          Jean &lsquo;Kxrbx&rsquo;
+        </a>
+      </p>
+
       <footer className="site-footer">
         <span>no login &middot; no mercy</span>
         <button type="button" className="footer-link" onClick={openLegal}>
