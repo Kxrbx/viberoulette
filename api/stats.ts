@@ -15,17 +15,20 @@ interface QueryRow {
 }
 
 interface QueryResponse {
-  data?: QueryRow[]
+  data?: QueryRow[] | QueryRow
 }
 
 function metric(res: QueryResponse | null, key: 'users' | 'pageviews'): number | null {
-  const v = res?.data?.[0]?.metrics?.[key]
+  const data = res?.data
+  const row = Array.isArray(data) ? data[0] : data
+  const v = row?.metrics?.[key]
   return typeof v === 'number' ? v : null
 }
 
 export default async function handler(_req: VercelReq, res: VercelRes): Promise<void> {
   const apiKey = process.env.VEMETRIC_API_KEY
   if (!apiKey) {
+    console.error('[stats] VEMETRIC_API_KEY is not set')
     res.status(503).json({ live: null, total: null })
     return
   }
@@ -51,6 +54,7 @@ export default async function handler(_req: VercelReq, res: VercelRes): Promise<
     ])
 
     if (!liveRes.ok || !totalRes.ok) {
+      console.error(`[stats] Vemetric upstream error: live=${liveRes.status} total=${totalRes.status}`)
       res.status(502).json({ live: null, total: null })
       return
     }
@@ -64,7 +68,8 @@ export default async function handler(_req: VercelReq, res: VercelRes): Promise<
     res
       .status(200)
       .json({ live: metric(liveJson, 'users'), total: metric(totalJson, 'pageviews') })
-  } catch {
+  } catch (err) {
+    console.error('[stats] fetch failed', err)
     res.status(502).json({ live: null, total: null })
   }
 }

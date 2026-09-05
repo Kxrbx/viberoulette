@@ -19,7 +19,10 @@ export function StatsCounters() {
     async function load(): Promise<void> {
       try {
         const res = await fetch('/api/stats')
-        if (!res.ok) return
+        if (!res.ok) {
+          console.warn(`[stats] /api/stats responded ${res.status} — counters hidden`)
+          return
+        }
         const json = (await res.json()) as Partial<Stats>
         if (cancelled) return
         setStats({
@@ -27,7 +30,7 @@ export function StatsCounters() {
           total: typeof json.total === 'number' ? json.total : null,
         })
       } catch {
-        /* offline or backend not configured — stay hidden */
+        console.warn('[stats] /api/stats unreachable — counters hidden')
       }
     }
     void load()
