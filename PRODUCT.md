@@ -19,12 +19,15 @@ Combinatorial: ~104 niches × ~87 product types ≈ 9,000 unique ideas, plus ~35
 
 ## Brand commitments (pinned by user)
 - Clean and modern, text-based, dark theme, mostly grayscale. Typography does the work; no color accents, no casino clichés, no neon glow, no illustrations.
-- No login, no tracking, no friction. One page, one action. Fonts are self-hosted; zero third-party requests on page load.
+- No login, no friction. One page, one action. Fonts are self-hosted; analytics
+  is cookieless (Vemetric, EU-hosted) plus one serverless `/api/stats` proxy for
+  the public counters.
 ## Monetization
 
-None. No ads, no affiliate links, no email capture, no tracking. Legal pages
+None. No ads, no affiliate links, no email capture, no cross-site tracking. Legal pages
 (publisher/host/privacy/disclaimer) live in the overlay opened from the footer `legal`
 link.
 
 ## Non-goals (v1)
-No sharing/copy buttons, no history, no lock/reroll-per-field, no backend. Single static SPA.
+No sharing/copy buttons, no history, no lock/reroll-per-field. Single SPA +
+one serverless stats proxy.

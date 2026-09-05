@@ -6,8 +6,8 @@ One click decides what you build next.
 
 A one-button idea generator for people who ship software fast and stall on the question
 "what should I build next?" Click once, get a niche plus a product type, assembled into
-a single sentence specific enough to start building tonight. No login, no tracking,
-no ads, no backend.
+a single sentence specific enough to start building tonight. No login, no ads,
+cookieless audience measurement (Vemetric, EU-hosted).
 
 ![Vibe Roulette](public/og.png)
 
@@ -45,8 +45,8 @@ src/
 public/                   favicon, og image, self-hosted fonts
 ```
 
-Zero runtime dependencies — just `react` and `react-dom`. Lint with `oxlint`,
-types with `tsc`.
+Zero runtime dependencies — just `react` and `react-dom` plus `@vemetric/react`
+for cookieless analytics. Lint with `oxlint`, types with `tsc`.
 
 ## Run it
 
@@ -60,8 +60,10 @@ pnpm preview  # serve the production build
 ## Deploy
 
 Hosted on [Vercel](https://vercel.com) at https://viberoulette.lol — every push to
-`main` redeploys automatically. Any static host works too, the build output in
-`dist/` is plain static files.
+`main` redeploys automatically. The `/api/stats` serverless function needs the
+`VEMETRIC_API_KEY` env var; the frontend needs `VITE_VEMETRIC_TOKEN` (see
+`.env.example`). Any static host works too, but the public counters require a
+host that can run the `/api/stats` proxy.
 
 ## Docs
 

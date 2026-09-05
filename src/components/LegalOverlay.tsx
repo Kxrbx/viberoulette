@@ -58,14 +58,25 @@ export function LegalOverlay({ onClose }: LegalOverlayProps) {
           <h2>Privacy</h2>
           <p>
             Your preferences (spin count, twists and sound settings) are stored only in your
-            browser&rsquo;s localStorage and never leave your device. There are no accounts, no
-            forms and no tracking.
+            browser&rsquo;s localStorage and never leave your device. There are no accounts
+            and no forms.
           </p>
           <p>
-            The hosting provider (Vercel) may keep standard server logs for security
-            purposes.
+            Anonymous audience measurement is provided by Vemetric (Austria, EU-hosted,
+            cookieless by default, no cross-site tracking). It records aggregated page
+            views and an anonymous &ldquo;spin&rdquo; event (twists on/off only). No
+            cookies are set without your consent and no personal data is collected.
+            Technical proxying may involve Cloudflare.
           </p>
-          <p>Questions about this page: {LEGAL.publisherEmail}</p>
+          <p>
+            The public visit and live-visitor counters in the footer show aggregated
+            counts only. The hosting provider (Vercel) may keep standard server logs
+            for security purposes.
+          </p>
+          <p>
+            Access or deletion request: {LEGAL.publisherEmail} (forwarded to Vemetric
+            when needed).
+          </p>
         </section>
 
         <section className="legal-section">

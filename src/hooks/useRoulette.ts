@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { vemetric } from '@vemetric/react'
 import { NICHES } from '../data/niches'
 import { PRODUCTS } from '../data/products'
 import { TWISTS } from '../data/twists'
@@ -116,6 +117,14 @@ export function useRoulette() {
       persist(SPINS_KEY, String(next))
       return next
     })
+    // ponytail: fire-and-forget, never blocks the spin animation
+    try {
+      void vemetric.trackEvent('spin', {
+        eventData: { twistsEnabled: twistsRef.current },
+      })
+    } catch {
+      /* analytics unavailable */
+    }
   }, [])
 
   const toggleTwists = useCallback(() => {

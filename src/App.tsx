@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { ResultBoard } from './components/ResultBoard'
 import { SpinButton } from './components/SpinButton'
+import { StatsCounters } from './components/StatsCounters'
 import { LegalOverlay } from './components/LegalOverlay'
 import { useRoulette } from './hooks/useRoulette'
 import { buildSentence } from './lib/sentence'
@@ -104,6 +105,7 @@ export default function App() {
         <span aria-label={`${spins} spins so far`}>
           {spins} {spins === 1 ? 'spin' : 'spins'}
         </span>
+        <StatsCounters />
       </footer>
 
       <div className="visually-hidden" role="status" aria-live="polite">

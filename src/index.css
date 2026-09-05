@@ -521,6 +521,38 @@ body {
   margin-top: 0.75rem;
 }
 
+/* ---------- public stats ---------- */
+
+.stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.stats-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  animation: live-pulse 2s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
 /* ---------- motion preferences ---------- */
 
 @media (prefers-reduced-motion: reduce) {
