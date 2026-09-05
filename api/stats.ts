@@ -49,7 +49,8 @@ export default async function handler(_req: VercelReq, res: VercelRes): Promise<
           Authorization: `Bearer ${apiKey}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ dateRange: '1year', metrics: ['pageviews'] }),
+        // ponytail: 30days fits the free-tier retention; wider ranges 403
+        body: JSON.stringify({ dateRange: '30days', metrics: ['pageviews'] }),
       }),
     ])
 
