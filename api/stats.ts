@@ -54,8 +54,9 @@ export default async function handler(_req: VercelReq, res: VercelRes): Promise<
     ])
 
     if (!liveRes.ok || !totalRes.ok) {
-      console.error(`[stats] Vemetric upstream error: live=${liveRes.status} total=${totalRes.status}`)
-      res.status(502).json({ live: null, total: null })
+      const reason = `upstream live=${liveRes.status} total=${totalRes.status}`
+      console.error(`[stats] Vemetric ${reason}`)
+      res.status(502).json({ live: null, total: null, error: reason })
       return
     }
 
@@ -70,6 +71,6 @@ export default async function handler(_req: VercelReq, res: VercelRes): Promise<
       .json({ live: metric(liveJson, 'users'), total: metric(totalJson, 'pageviews') })
   } catch (err) {
     console.error('[stats] fetch failed', err)
-    res.status(502).json({ live: null, total: null })
+    res.status(502).json({ live: null, total: null, error: 'fetch failed' })
   }
 }
