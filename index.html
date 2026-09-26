@@ -16,9 +16,14 @@
       property="og:description"
       content="Click once. Get a niche and a product to build. 9,000+ ideas on the wheel, zero logins."
     />
+    <meta property="og:site_name" content="Vibe Roulette" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://viberoulette.lol/" />
     <meta property="og:image" content="https://viberoulette.lol/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vibe Roulette — one click, one idea to build" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Vibe Roulette" />
     <meta
@@ -26,10 +31,43 @@
       content="Click once. Get a niche and a product to build. 9,000+ ideas on the wheel, zero logins."
     />
     <meta name="twitter:image" content="https://viberoulette.lol/og.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "Vibe Roulette",
+            "url": "https://viberoulette.lol/",
+            "description": "Click once, get a niche and a product to build. The idea generator for vibe coders."
+          },
+          {
+            "@type": "WebApplication",
+            "name": "Vibe Roulette",
+            "url": "https://viberoulette.lol/",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Web",
+            "offers": { "@type": "Offer", "price": "0" }
+          }
+        ]
+      }
+    </script>
     <title>Vibe Roulette — one click, one idea to build</title>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <main>
+        <h1>Vibe Roulette — one click, one idea to build</h1>
+        <p>
+          Vibe Roulette is a one-button idea generator for vibe coders. Click once and get a
+          niche plus a product type to build — for example "An AI voice agent for local
+          plumbers", "A booking tool for dog groomers" or "A CRM that doesn't suck for
+          wedding planners". Around 9,000 unique ideas, no login, free forever.
+        </p>
+        <p><a href="https://viberoulette.lol/ideas/">Browse startup ideas by niche</a></p>
+      </main>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

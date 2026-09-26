@@ -1,0 +1,23 @@
+# Vibe Roulette
+
+> One click, one startup idea to build. The idea generator for vibe coders.
+
+Vibe Roulette combines 100+ real niches (dog groomers, local plumbers, wedding
+planners…) with 80+ shippable product types (booking tools, AI voice agents,
+Chrome extensions…) into 9,000+ concrete build prompts. Free, no login.
+
+- Home: https://viberoulette.lol/
+- Browse ideas by niche and product: https://viberoulette.lol/ideas/
+- Sitemap: https://viberoulette.lol/sitemap.xml
+
+## How it works
+
+1. Click SPIN.
+2. Get a niche + a product type (+ optional twist), e.g. "An AI voice agent for local plumbers."
+3. Start building tonight.
+
+## Facts
+
+- Free forever. No ads, no affiliate links, no email capture, no tracking.
+- Analytics: cookieless, EU-hosted (Vemetric).
+- Stack: single static page + serverless stats proxy.

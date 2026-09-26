@@ -414,6 +414,7 @@ body {
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  text-decoration: none;
   color: var(--text-faint);
   background: transparent;
   border: none;

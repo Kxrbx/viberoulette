@@ -58,7 +58,7 @@ export default function App() {
   return (
     <div className="page">
       <header className="site-header">
-        <span className="wordmark">Vibe Roulette</span>
+        <h1 className="wordmark">Vibe Roulette</h1>
         <span className="header-stat">
           {COMBOS.toLocaleString('en-US')} ideas on the wheel
         </span>
@@ -99,6 +99,9 @@ export default function App() {
 
       <footer className="site-footer">
         <span>no login &middot; no mercy</span>
+        <a className="footer-link" href="/ideas/">
+          ideas
+        </a>
         <button type="button" className="footer-link" onClick={openLegal}>
           legal
         </button>
