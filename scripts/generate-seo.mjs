@@ -55,9 +55,13 @@ const CSS =
   'a{color:#ededed}h1{font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:-.01em}' +
   '.dim{color:#9a9a9a}ol{padding-left:1.25rem}li{margin:.4rem 0}' +
   '.cta{display:inline-block;border:1px solid #3d3d3d;border-radius:999px;padding:.7rem 2rem;text-decoration:none;margin-top:1.5rem}' +
-  'nav.tags a{display:inline-block;margin:.2rem .4rem .2rem 0;color:#9a9a9a}'
+  'nav.tags a{display:inline-block;margin:.2rem .4rem .2rem 0;color:#9a9a9a}' +
+  'footer{margin-top:2.5rem;border-top:1px solid #242424;padding-top:1rem}'
 
-function page({ title, desc, canonical, h1, body, breadcrumb, extra = [] }) {
+const TODAY_LABEL = new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+const AUTHOR = '<a href="https://x.com/kxrbx" rel="noopener">Kxrbx</a>'
+
+function page({ title, desc, canonical, h1, body, breadcrumb, extra = [], home = '../' }) {
   const jsonld = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -99,6 +103,7 @@ function page({ title, desc, canonical, h1, body, breadcrumb, extra = [] }) {
 <main>
 <h1>${esc(h1)}</h1>
 ${body}
+<footer><p class="dim">Updated ${TODAY_LABEL} · Built by ${AUTHOR} · <a href="${home}">Vibe Roulette — spin the wheel</a></p></footer>
 </main>
 </body>
 </html>
@@ -140,6 +145,7 @@ const urls = [`${SITE}/`, `${SITE}/ideas/`]
       canonical: `${SITE}/ideas/`,
       h1: 'Startup ideas by niche',
       breadcrumb: [{ name: 'Home', url: `${SITE}/` }],
+      home: '../',
       extra: [
         {
           '@type': 'FAQPage',
@@ -180,7 +186,8 @@ NICHES.forEach((niche, i) => {
         { name: 'Home', url: `${SITE}/` },
         { name: 'Ideas', url: `${SITE}/ideas/` },
       ],
-      body: `<p class="dim">${PRODUCTS.length} product types × ${esc(niche)} — concrete prompts a vibe coder can ship in a weekend. No login, free.</p>
+      home: '../../',
+      body: `<p class="dim">Software startup ideas <em>for builders</em> targeting ${esc(niche)} — concrete products a vibe coder can ship in a weekend. Not a how-to-start-a-${esc(niche)}-business guide.</p>
 <ol>${examples.map((e) => `<li>${esc(e)}</li>`).join('')}</ol>
 <nav class="tags"><span class="dim">Related niches:</span> ${related}</nav>
 <a class="cta" href="../../">Spin the wheel for ${esc(niche)}</a>`,
@@ -191,21 +198,23 @@ NICHES.forEach((niche, i) => {
 // --- product pages ---
 PRODUCTS.forEach((product, i) => {
   const slug = productSlugs[i]
+  const cap = product.charAt(0).toUpperCase() + product.slice(1)
   const examples = Array.from({ length: 12 }, (_, k) => sentence(product, pick(NICHES, i + k * 11, 1)))
   const url = `${SITE}/products/${slug}/`
   urls.push(url)
   write(
     `products/${slug}/index.html`,
     page({
-      title: `${product} ideas — Vibe Roulette`,
-      desc: `${product} ideas for real niches: ${examples.slice(0, 3).join(' ').slice(0, 140)}…`,
+      title: `${cap} — startup ideas for real niches — Vibe Roulette`,
+      desc: `${cap} ideas for real niches: ${examples.slice(0, 3).join(' ').slice(0, 140)}…`,
       canonical: url,
-      h1: `${product.charAt(0).toUpperCase() + product.slice(1)} ideas`,
+      h1: `${cap} — startup ideas`,
       breadcrumb: [
         { name: 'Home', url: `${SITE}/` },
         { name: 'Ideas', url: `${SITE}/ideas/` },
       ],
-      body: `<p class="dim">One product shape, ${NICHES.length} niches — pick the audience and start building tonight.</p>
+      home: '../../',
+      body: `<p class="dim">One product shape, ${NICHES.length} niches — concrete software ideas for builders. Pick the audience and start building tonight.</p>
 <ol>${examples.map((e) => `<li>${esc(e)}</li>`).join('')}</ol>
 <a class="cta" href="../../">Spin the wheel</a>`,
     }),
