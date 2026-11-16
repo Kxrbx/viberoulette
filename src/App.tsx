@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import { ResultBoard } from './components/ResultBoard'
 import { SpinButton } from './components/SpinButton'
 import { StatsCounters } from './components/StatsCounters'
@@ -57,6 +58,7 @@ export default function App() {
 
   return (
     <div className="page">
+      <Analytics />
       <header className="site-header">
         <h1 className="wordmark">Vibe Roulette</h1>
         <span className="header-stat">
